@@ -68,7 +68,7 @@ export default AppNavigator = () => {
         component={CalculatorNavigator}
         options={{ title: 'Hesaplayıcı' }}
       />
-      {/* <AppBottomTabNavigator.Screen name="Home" component={HomeScreen} /> */}
+      <AppBottomTabNavigator.Screen name="Home" component={HomeScreen} />
     </AppBottomTabNavigator.Navigator>
   );
 };

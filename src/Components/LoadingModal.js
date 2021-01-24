@@ -6,14 +6,12 @@ export default LoadingModal = ({ isVisible }) => {
     <Modal animationType="fade" transparent={true} visible={isVisible}>
       <View
         style={{
-          backgroundColor: '#000',
           flex: 1,
-          opacity: 0.5,
           justifyContent: 'center',
         }}
       >
         <View>
-          <ActivityIndicator color="#000" size={40} />
+          <ActivityIndicator color="#fff" size={40} />
         </View>
       </View>
     </Modal>

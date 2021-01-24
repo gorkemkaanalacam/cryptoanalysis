@@ -3,6 +3,7 @@ import { View, Text, FlatList, RefreshControl } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import LoadingModal from '../Components/LoadingModal';
 import Style from '../Assets/Styles/Style';
+import ConstantStyle from '../Assets/Styles/ConstantStyle';
 
 export default CryptoListScreen = ({ navigation }) => {
   const [refreshing, setRefreshing] = useState(false);
@@ -30,15 +31,47 @@ export default CryptoListScreen = ({ navigation }) => {
     <View>
       <FlatList
         data={cryptoList}
+        showsVerticalScrollIndicator={false}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => {
+          const percent =
+            item.metrics.market_data.percent_change_usd_last_24_hours;
+          const percentColor = percent.toString().includes('-')
+            ? 'red'
+            : 'green';
+
           return (
             <TouchableOpacity
+              style={{
+                flexDirection: 'row',
+                paddingVertical: 10,
+                paddingHorizontal: 20,
+              }}
               onPress={() =>
-                navigation.navigate('CryptoDetail', { slug: item.slug })
+                navigation.navigate('CryptoDetail', {
+                  currency: item,
+                })
               }
             >
-              <Text style={Style.Text}>{item.slug}</Text>
+              <View style={{ flex: 1 }}>
+                <Text style={{ ...Style.text, fontSize: 16 }}>
+                  {item.slug.charAt(0).toUpperCase() + item.slug.slice(1)}
+                </Text>
+                <Text style={{ color: ConstantStyle.thirdColor }}>
+                  {item.symbol}
+                </Text>
+              </View>
+              <View style={{ flexShrink: 0, alignItems: 'flex-end' }}>
+                <Text style={{ ...Style.text, fontSize: 16 }}>
+                  {item.metrics.market_data.price_usd.toFixed(2)}
+                </Text>
+                <Text style={{ ...Style.text, color: percentColor }}>
+                  {'%' +
+                    item.metrics.market_data.percent_change_usd_last_24_hours.toFixed(
+                      2
+                    )}
+                </Text>
+              </View>
             </TouchableOpacity>
           );
         }}

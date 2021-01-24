@@ -4,4 +4,5 @@ export default ConstantStyle = {
   primaryColor: '#fff',
   secondaryColor: '#FAB212',
   inputColor: '#2F324C',
+  thirdColor: '#BCBDC1',
 };

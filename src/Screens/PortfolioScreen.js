@@ -47,7 +47,7 @@ export default PortfolioScreen = ({ navigation }) => {
     <View>
       <FlatList
         data={portfolioList}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => {
           return <Text>{item.amount}</Text>;
         }}

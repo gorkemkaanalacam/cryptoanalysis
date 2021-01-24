@@ -16,14 +16,14 @@ export default SignInScreen = () => {
     <View style={Style.view}>
       <TextInput
         style={Style.textInput}
-        placeholderTextColor="#BCBDC1"
+        placeholderTextColor={ConstantStyle.thirdColor}
         placeholder="Kullanıcı Adı"
         value={username}
         onChangeText={setUsername}
       />
       <TextInput
         style={{ ...Style.textInput, marginBottom: 30 }}
-        placeholderTextColor="#BCBDC1"
+        placeholderTextColor={ConstantStyle.thirdColor}
         placeholder="Şifre"
         value={password}
         onChangeText={setPassword}

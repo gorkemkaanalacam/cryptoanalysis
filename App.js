@@ -1,14 +1,14 @@
 import React from 'react';
-import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
+import { NavigationContainer, DarkTheme } from '@react-navigation/native';
 import RootNavigator from './src/Navigators/RootNavigator';
 import Provider from './src/Context/Provider';
 import { StatusBar } from 'expo-status-bar';
 import ConstantStyle from './src/Assets/Styles/ConstantStyle';
 
 const MyTheme = {
-  ...DefaultTheme,
+  ...DarkTheme,
   colors: {
-    ...DefaultTheme.colors,
+    ...DarkTheme.colors,
     primary: ConstantStyle.primaryColor,
     background: ConstantStyle.backgroundColor,
     border: ConstantStyle.tabBackgroundColor,
