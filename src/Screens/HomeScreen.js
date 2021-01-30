@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { View, Text, Button } from 'react-native';
+import { SafeAreaView, Text, Button, View } from 'react-native';
 import { Context } from '../Context/Provider';
 
 export default HomeScreen = () => {
@@ -8,9 +8,19 @@ export default HomeScreen = () => {
   } = useContext(Context);
 
   return (
-    <View>
-      <Text>Home Screen</Text>
-      <Button title="Sign out" onPress={() => signOut()} />
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'stretch',
+        padding: 20,
+      }}
+    >
+      <Button
+        title="Sign out"
+        onPress={() => signOut()}
+        color={ConstantStyle.inputColor}
+      />
     </View>
   );
 };

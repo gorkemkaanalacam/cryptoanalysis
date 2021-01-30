@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Image } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import CryptoListScreen from '../Screens/CryptoListScreen';
 import CryptoDetailScreen from '../Screens/CryptoDetailScreen';
@@ -12,7 +13,16 @@ export default CryptoNavigator = () => {
       <CryptoStackNavigator.Screen
         name="CryptoList"
         component={CryptoListScreen}
-        options={{ title: 'Piyasalar' }}
+        options={{
+          title: 'Piyasalar',
+          headerTitleAlign: 'center',
+          headerLeft: () => (
+            <Image
+              source={require('../../assets/icon.png')}
+              style={{ width: 50, height: 50 }}
+            />
+          ),
+        }}
       />
       <CryptoStackNavigator.Screen
         name="CryptoDetail"

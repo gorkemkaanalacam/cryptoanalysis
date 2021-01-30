@@ -13,6 +13,7 @@ export default Style = StyleSheet.create({
     marginVertical: 10,
     fontSize: 16,
     backgroundColor: ConstantStyle.inputColor,
+    color: ConstantStyle.primaryColor,
   },
   button: {
     color: ConstantStyle.inputColor,

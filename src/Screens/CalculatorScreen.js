@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
+import Style from '../Assets/Styles/Style';
+import ConstantStyle from '../Assets/Styles/ConstantStyle';
 
 export default CalculatorScreen = () => {
   const [loadingModalVisible, setLoadingModalVisible] = useState(false);
   const [cryptoList, setCryptoList] = useState();
-  const [coinCount, setCoinCount] = useState(0);
-  const [coinValue, setCoinValue] = useState(0);
-  const [coinType, setCoinType] = useState(0);
+  const [coinCount, setCoinCount] = useState();
+  const [coinValue, setCoinValue] = useState();
+  const [coinType, setCoinType] = useState();
 
   const fetchCryptoList = () => {
     setLoadingModalVisible(true);
@@ -42,20 +44,64 @@ export default CalculatorScreen = () => {
 
   return (
     <View>
-      <TextInput
-        placeholder="Value"
-        value={coinCount.toString()}
-        onChangeText={setCoinCount}
-        keyboardType="number-pad"
-      />
-      <Picker onValueChange={setCoinType} selectedValue={coinType}>
-        {cryptoList?.map((item) => {
-          return (
-            <Picker.Item key={item.id} label={item.slug} value={item.symbol} />
-          );
-        })}
-      </Picker>
-      <Text>{coinValue * coinCount}</Text>
+      <View
+        style={{
+          flexDirection: 'row',
+          paddingVertical: 10,
+          backgroundColor: ConstantStyle.inputColor,
+        }}
+      >
+        <TextInput
+          style={{
+            ...Style.textInput,
+            flex: 1,
+            margin: 0,
+            fontSize: 26,
+          }}
+          placeholder="0"
+          placeholderTextColor={ConstantStyle.primaryColor}
+          value={coinCount && coinCount}
+          onChangeText={setCoinCount}
+          keyboardType="number-pad"
+        />
+        <View
+          style={{
+            flexShrink: 0,
+            width: 130,
+            paddingTop: 10,
+          }}
+        >
+          <Picker
+            onValueChange={setCoinType}
+            selectedValue={coinType}
+            dropdownIconColor="#00000000"
+            style={{
+              color: ConstantStyle.primaryColor,
+            }}
+          >
+            {cryptoList?.map((item) => {
+              return (
+                <Picker.Item
+                  key={item.id}
+                  label={item.slug.charAt(0).toUpperCase() + item.slug.slice(1)}
+                  value={item.symbol}
+                />
+              );
+            })}
+          </Picker>
+        </View>
+      </View>
+      <Text
+        style={{
+          ...Style.textInput,
+          paddingVertical: 30,
+          marginTop: 0,
+          borderTopWidth: 1,
+          fontSize: 26,
+        }}
+      >
+        {coinCount ? '$' + (coinValue * coinCount).toFixed(2) : '0'}
+      </Text>
       <LoadingModal isVisible={loadingModalVisible} />
     </View>
   );
