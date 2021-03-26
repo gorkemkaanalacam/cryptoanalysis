@@ -18,8 +18,6 @@ export default NewsListScreen = ({ navigation }) => {
   const [loadingModalVisible, setLoadingModalVisible] = useState(false);
   const [newsList, setNewsList] = useState();
 
-  console.log(newsList && newsList[0]);
-
   const fetchNewsList = () => {
     setRefreshing(false);
     setLoadingModalVisible(true);

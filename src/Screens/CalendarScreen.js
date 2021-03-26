@@ -10,8 +10,6 @@ export default CalendarScreen = () => {
   const [loadingModalVisible, setLoadingModalVisible] = useState(false);
   const [calander, setCalander] = useState();
 
-  console.log(calander && calander[0]);
-
   const fetchCalander = () => {
     setRefreshing(false);
     setLoadingModalVisible(true);

@@ -1,15 +1,16 @@
 import React, { useState, useContext } from 'react';
-import { View, TextInput, Button, Image, TouchableOpacity, Text } from 'react-native';
+import { View, TextInput, Button, Image } from 'react-native';
 import { Context } from '../Context/Provider';
 import Style from '../Assets/Styles/Style';
 import ConstantStyle from '../Assets/Styles/ConstantStyle';
 
-export default SignInScreen = ({navigation}) => {
+export default SignUpScreen = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [phone, setPhone] = useState('');
 
   const {
-    authContext: { signIn },
+    authContext: { signUp },
   } = useContext(Context);
 
   return (
@@ -35,14 +36,19 @@ export default SignInScreen = ({navigation}) => {
         onChangeText={setPassword}
         secureTextEntry
       />
-      <Button
-        title="GİRİŞ YAP"
-        color={ConstantStyle.inputColor}
-        onPress={() => signIn({ username, password })}
+      <TextInput
+        style={{ ...Style.textInput, marginBottom: 30 }}
+        placeholderTextColor={ConstantStyle.thirdColor}
+        placeholder="Phone"
+        value={phone}
+        onChangeText={setPhone}
+        secureTextEntry
       />
-      <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-        <Text style={{color:ConstantStyle.primaryColor}}>Kayıt Ol</Text>
-      </TouchableOpacity>
+      <Button
+        title="Kayıt Ol"
+        color={ConstantStyle.inputColor}
+        onPress={() => signUp({ username, password, phone })}
+      />
     </View>
   );
 };

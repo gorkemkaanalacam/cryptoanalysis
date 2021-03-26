@@ -61,7 +61,7 @@ export default AppNavigator = () => {
       <AppBottomTabNavigator.Screen
         name="Economics"
         component={EconomicsNavigator}
-        options={{ title: 'Takvim' }}
+        options={{ title: 'Analizler' }}
       />
       <AppBottomTabNavigator.Screen
         name="Calculator"

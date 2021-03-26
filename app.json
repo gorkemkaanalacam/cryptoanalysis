@@ -18,7 +18,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.yourcompany.yourappname",
+      "bundleIdentifier": "com.cryptoanalysis.cryptoanalysis",
       "buildNumber": "1.0.0",
       "requireFullScreen": true
     },

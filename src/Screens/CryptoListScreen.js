@@ -36,7 +36,7 @@ export default CryptoListScreen = ({ navigation }) => {
         renderItem={({ item }) => {
           const percent =
             item.metrics.market_data.percent_change_usd_last_24_hours;
-          const percentColor = percent.toString().includes('-')
+          const percentColor = percent?.toString().includes('-')
             ? 'red'
             : 'green';
 
@@ -67,7 +67,7 @@ export default CryptoListScreen = ({ navigation }) => {
                 </Text>
                 <Text style={{ ...Style.text, color: percentColor }}>
                   {'%' +
-                    item.metrics.market_data.percent_change_usd_last_24_hours.toFixed(
+                    item.metrics.market_data.percent_change_usd_last_24_hours?.toFixed(
                       2
                     )}
                 </Text>
